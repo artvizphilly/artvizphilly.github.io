@@ -1,0 +1,37 @@
+title = "Mapping Black Philly Art"
+baseURL = '//templedss.github.io/LEADING/'
+languageCode = 'en-us'
+theme = "ananke"
+
+resourceDir = "../resources"
+canonifyURLs = true
+staticDir = "../static"
+
+SectionPagesMenu = "main"
+Paginate = 10 # this is set low for demonstrating with dummy content. Set to a higher number
+googleAnalytics = ""
+enableRobotsTXT = true
+
+[params]
+  text_color = ""
+  author = "Alex Wermer-Colan"
+  favicon = ""
+  site_logo = ""
+  description = "Website for PMA/Temple project."
+  # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
+  background_color_class = "bg-black"
+  recent_posts_number = 3
+
+
+[menu]
+    [[menu.main]]
+    identifier = "syllabus"
+    name       = "Syllabus"
+    url        = "/syllabus/"
+    weight     = 1
+
+    [[menu.main]]
+    identifier = "resources"
+    name       = "Resources"
+    url        = "/resources/"
+    weight     = 2
