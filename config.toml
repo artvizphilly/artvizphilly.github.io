@@ -1,5 +1,5 @@
 title = "Mapping Black Philly Art"
-baseURL = '//templedss.github.io/LEADING/'
+baseURL = '//artvizphilly.github.io/'
 languageCode = 'en-us'
 theme = "ananke"
 
