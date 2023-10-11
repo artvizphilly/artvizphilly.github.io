@@ -15,6 +15,6 @@ Install Hugo on your local computer.
 To clone this repo and test development locally, make sure to use the following command:
 
 ```
-git clone --recursive https://github.com/TempleDSS/LEADING.git
+git clone --recursive https://github.com/artvizphilly.github.io.git
 ```
 
