@@ -16,3 +16,8 @@ Mapping Black Philly Art is a digital humanities project that uses Wikidata, SPA
 - **Holly Tomren**, Temple University Libraries
 - **Eiman Ahmed**, LEADING Fellow, Rutgers University
 - **Pelle Tracey**, LEADING Fellow, University of Michigan
+
+## Contact
+
+- **Synatra Smith** -- [Philadelphia Museum of Art](https://philamuseum.org/)
+- **Alex Wermer-Colan** -- [Scholars Studio, Temple University Libraries](https://sites.temple.edu/tudsc/)
