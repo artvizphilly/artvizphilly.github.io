@@ -9,14 +9,7 @@ featured_image: "/parkbench.png"
 - [Wikidata notebooks and scripts](https://github.com/artvizphilly/wikidata) -- SPARQL queries and Python visualizations for Black artists in Philadelphia
 - [Project website source](https://github.com/artvizphilly/artvizphilly.github.io) -- This Hugo site
 
-## LEADING Fellows Research (2022)
-
-This project included work by [LEADING Fellows](https://mrc.cci.drexel.edu/leading/) Pelle Tracey and Eiman Ahmed, through the data science fellowship program run by the [Metadata Research Center](https://mrc.cci.drexel.edu/) at Drexel University.
-
-Fellows contributed to two areas:
-
-1. **Wikidata editing** -- Batch-adding PMA entity IDs to Wikidata records for Black artists using OpenRefine
-2. **Murals and housing values** -- An R Shiny app mapping the relationship between mural density and housing values by zip code in Philadelphia
+## LEADING Fellows Data and Code
 
 All code, data, and research notes from the fellowship are available for download:
 
@@ -25,9 +18,9 @@ All code, data, and research notes from the fellowship are available for downloa
 - [Datasets](/files/leading-fellows/data/) (CSV, GeoJSON, XLSX)
 - [Wikidata query exports](/files/leading-fellows/wikidata-queries/) (XLSX)
 
-See the [Murals and Housing Values](/post/murals-housing/) post for a full writeup.
-
 ## Scholars Studio Blog Posts
+
+The following posts were published on the [Temple University Scholars Studio blog](https://sites.temple.edu/tudsc/) as part of the project's first year of work:
 
 {{< figure src="Wikidata.png" title="" >}}
 
@@ -44,3 +37,13 @@ See the [Murals and Housing Values](/post/murals-housing/) post for a full write
 ### [Querying Wikidata with SPARQL](https://sites.temple.edu/tudsc/2021/12/15/querying-wikidata/)
 
 ### [Visualizing Wikidata: Using Python to Analyze Identity and Representation](https://sites.temple.edu/tudsc/2022/01/24/visualizing-wikidata-using-python-to-analyze-identity-and-representation-in-wikidata-about-black-art-exhibitions/)
+
+---
+
+## About This Site
+
+This website was produced through the [LEADING Fellowship](https://mrc.cci.drexel.edu/leading/), a data science fellowship program run by the Metadata Research Center at Drexel University in partnership with the Philadelphia Museum of Art and Temple University Libraries.
+
+The project spanned two years of fellows. In the first year (2021--2022), fellows contributed blog posts on Wikidata editing, SPARQL querying, and Python visualization, published on the [Temple University Scholars Studio blog](https://sites.temple.edu/tudsc/). In the second year (2022--2023), fellows Pelle Tracey and Eiman Ahmed built this website and created the tutorials and analyses hosted here, including work on Wikidata batch editing with OpenRefine and an R Shiny app exploring the relationship between mural density and housing values in Philadelphia.
+
+The tutorials on this site -- covering [Wikidata](/post/wikidata/), [SPARQL](/post/sparql/), [Python visualization](/post/python/), [murals and housing values](/post/murals-housing/), and [building a Hugo site](/post/hugo-tutorial/) -- were written by the fellows as part of the program. The fellowship also included a five-week curriculum covering Wikidata, SPARQL, Python, GitHub, and web development with Hugo.
