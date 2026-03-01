@@ -8,7 +8,7 @@ featured_image: "/parkbench.png"
 
 {{< figure src="parkbench.png" title="Sample work of art" >}}
 
-For querying Wikidata, see our Wikidata repository: https://github.com/TempleDSS/Wikidata
+For querying Wikidata, see our Wikidata repository: https://github.com/artvizphilly/wikidata
 
 
 For background on this project, see the four blog posts on the Scholars Studio blog:
