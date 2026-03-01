@@ -1,14 +1,95 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mapping Black Philly Art</title><link>//artvizphilly.github.io/</link><description>Recent content on Mapping Black Philly Art</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 23 Aug 2022 10:19:26 -0400</lastBuildDate><atom:link href="//artvizphilly.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Pelle Notes</title><link>//artvizphilly.github.io/post/pelle-notes/</link><pubDate>Tue, 23 Aug 2022 10:19:26 -0400</pubDate><guid>//artvizphilly.github.io/post/pelle-notes/</guid><description>Pelle&amp;rsquo;s Notes: Using Hugo to build a simple static site. Hugo is a useful tool for creating a website. In these notes, I will refer to using Hugo alongside Github. Github is used here both as a place to store the code for your site so that you can collaborate with others and access it from any computer, and as a way of hosting your site (putting it online so others can see it).</description></item><item><title>Python</title><link>//artvizphilly.github.io/post/python/</link><pubDate>Mon, 22 Aug 2022 11:13:32 -0400</pubDate><guid>//artvizphilly.github.io/post/python/</guid><description/></item><item><title>Wikidata</title><link>//artvizphilly.github.io/post/wikidata/</link><pubDate>Mon, 22 Aug 2022 10:58:08 -0400</pubDate><guid>//artvizphilly.github.io/post/wikidata/</guid><description>About Wikidata is a secondary collaborative database that is curated by individuals to ultimately retrieve and store information. As of now, the database contains nearly 100 million data items, all of which can be edited by Wikidata users, at any given time.
-Wikidata Items For instance, below is an image of the item Philadelphia Musuem of Art. As the image shows, the museum is classified as an instance of another item, the art museum.</description></item><item><title>Resources</title><link>//artvizphilly.github.io/resources/</link><pubDate>Tue, 26 Jul 2022 14:30:34 -0400</pubDate><guid>//artvizphilly.github.io/resources/</guid><description>Black Philly Artists in Wikidata Sample work of art For querying Wikidata, see our Wikidata repository: https://github.com/TempleDSS/Wikidata
-For background on this project, see the four blog posts on the Scholars Studio blog:
-Designing a Wikidata Project: Mapping Black Philly Art Curious about Wikidata but not sure where to start? In this beginner-friendly blog post, Dr. Synatra Smith explains how to get started with a Wikidata project. Beginning with a brief explanation of Wikidata, she outlines four stages of designing a project: Define the objective and scope, Identify data sources, Research and blogging, and Seek opportunities for collaboration.</description></item><item><title>Syllabus</title><link>//artvizphilly.github.io/syllabus/</link><pubDate>Tue, 26 Jul 2022 14:30:34 -0400</pubDate><guid>//artvizphilly.github.io/syllabus/</guid><description>Curriculum Sample work of art Week 1 Project Overview and Intro to Wikidata Overview of Editing Github
-Permissions Documentation Tutorials Introduction to Tracks
-Photogrammetry with Polycam and Blender Story Mapping with ArcGIS StoryMaps Unity for Android Wikidata and SPARQL/Python data viz Overview of Editing Wikidata
-Week 2 Querying Wikidata with SPARQL and Python Intro to Sparql
-Intro to Python with Google Colab Notebooks
-Week 3 Working with Github and Github Pages Basics of Git Github Pages Web frameworks Week 4 Developing a Website with Github Deciding on a Web Framework Building the Skeleton Web design principles Week 5 Website Design Documenting wikidata or 3d modeling work Generating content for the website</description></item><item><title>SPARQL</title><link>//artvizphilly.github.io/post/sparql/</link><pubDate>Mon, 10 Apr 2017 11:00:59 -0400</pubDate><guid>//artvizphilly.github.io/post/sparql/</guid><description>SPARQL is</description></item><item><title>About</title><link>//artvizphilly.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>//artvizphilly.github.io/about/</guid><description>Sample work of art The project team includes:
-Synatra Smith, Philadelphia Museum of Art
-Alex Wermer-Colan, Temple University
-Holly Tomren, Temple University
-Eiman Ahmed, Rutgers University Pelle Tracey, University of Michigan</description></item><item><title>Contact</title><link>//artvizphilly.github.io/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>//artvizphilly.github.io/contact/</guid><description>This is an example of a custom shortcode that you can put right into your content. You will need to add a form action to the the shortcode to make it work. Check out Formspree for a simple, free form service.
-Your Name Email Address An email address is required. Message</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mapping Black Philly Art</title><link>https://artvizphilly.github.io/</link><description>Recent content on Mapping Black Philly Art</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 01 Dec 2022 10:00:00 -0500</lastBuildDate><atom:link href="https://artvizphilly.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Murals and Housing Values in Philadelphia</title><link>https://artvizphilly.github.io/post/murals-housing/</link><pubDate>Thu, 01 Dec 2022 10:00:00 -0500</pubDate><guid>https://artvizphilly.github.io/post/murals-housing/</guid><description>&lt;p&gt;Is there a relationship between the number of murals and home values in a neighborhood? This was the central question behind our 2022 LEADING Fellows research project, conducted in collaboration with Dr. Synatra Smith and Dr. Alex Wermer-Colan at the Temple University Scholars Studio.&lt;/p&gt;
+&lt;p&gt;At first, it seemed straightforward: wealthier neighborhoods have more murals because residents can better advocate for beautification projects. But the relationship might work the other way &amp;ndash; murals could contribute to rising home values, either directly through curb appeal or indirectly through gentrification. We set out to examine this in two ways: statistical analysis and interactive mapping.&lt;/p&gt;</description></item><item><title>Building a Static Site with Hugo</title><link>https://artvizphilly.github.io/post/hugo-tutorial/</link><pubDate>Tue, 23 Aug 2022 10:19:26 -0400</pubDate><guid>https://artvizphilly.github.io/post/hugo-tutorial/</guid><description>&lt;h1 id="pelles-notes"&gt;Pelle&amp;rsquo;s Notes:&lt;/h1&gt;
+&lt;h2 id="using-hugo-to-build-a-simple-static-site"&gt;Using Hugo to build a simple static site.&lt;/h2&gt;
+&lt;p&gt;Hugo is a useful tool for creating a website. In these notes, I will refer to using Hugo alongside Github. Github is used here both as a place to store the code for your site so that you can collaborate with others and access it from any computer, &lt;em&gt;and&lt;/em&gt; as a way of hosting your site (putting it online so others can see it).&lt;/p&gt;</description></item><item><title>Visualizing Wikidata with Python</title><link>https://artvizphilly.github.io/post/python/</link><pubDate>Mon, 22 Aug 2022 11:13:32 -0400</pubDate><guid>https://artvizphilly.github.io/post/python/</guid><description>&lt;p&gt;For this project, we used Python to run SPARQL queries against Wikidata and turn the results into interactive visualizations. The main tools are &lt;a href="https://sparqlwrapper.readthedocs.io/"&gt;SPARQLWrapper&lt;/a&gt; for querying and &lt;a href="https://plotly.com/python/"&gt;Plotly&lt;/a&gt; for visualization.&lt;/p&gt;
+&lt;h2 id="setup"&gt;Setup&lt;/h2&gt;
+&lt;p&gt;The notebooks were built in Google Colab, so setup is minimal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; SPARQLWrapper &lt;span style="color:#f92672"&gt;import&lt;/span&gt; SPARQLWrapper, JSON
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;import&lt;/span&gt; pandas &lt;span style="color:#66d9ef"&gt;as&lt;/span&gt; pd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sparql &lt;span style="color:#f92672"&gt;=&lt;/span&gt; SPARQLWrapper(&lt;span style="color:#e6db74"&gt;&amp;#34;https://query.wikidata.org/sparql&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="running-a-query"&gt;Running a Query&lt;/h2&gt;
+&lt;p&gt;After defining a SPARQL query string (see the &lt;a href="https://artvizphilly.github.io/post/sparql/"&gt;SPARQL post&lt;/a&gt; for examples), you send it to Wikidata and convert the JSON response into a pandas DataFrame:&lt;/p&gt;</description></item><item><title>Querying Wikidata with SPARQL</title><link>https://artvizphilly.github.io/post/sparql/</link><pubDate>Mon, 22 Aug 2022 11:00:59 -0400</pubDate><guid>https://artvizphilly.github.io/post/sparql/</guid><description>&lt;p&gt;SPARQL is a query language for retrieving data from knowledge graphs like Wikidata. If you&amp;rsquo;ve used SQL to query databases, SPARQL follows a similar logic &amp;ndash; but instead of rows and columns, you&amp;rsquo;re working with linked triples: subject, predicate, object.&lt;/p&gt;
+&lt;p&gt;For this project, we used SPARQL to pull structured data about Black artists in Philadelphia from Wikidata&amp;rsquo;s public endpoint at &lt;a href="https://query.wikidata.org/"&gt;query.wikidata.org&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="a-basic-query"&gt;A Basic Query&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s a minimal query that retrieves artists tagged with the PMA&amp;rsquo;s African American artist entity (Q94124522):&lt;/p&gt;</description></item><item><title>Wikidata</title><link>https://artvizphilly.github.io/post/wikidata/</link><pubDate>Mon, 22 Aug 2022 10:58:08 -0400</pubDate><guid>https://artvizphilly.github.io/post/wikidata/</guid><description>&lt;h3 id="about"&gt;About&lt;/h3&gt;
+&lt;p&gt;Wikidata is a secondary collaborative database that is curated by individuals to ultimately retrieve and store information. As of now, the database contains nearly 100 million data items, all of which can be edited by Wikidata users, at any given time.&lt;/p&gt;
+&lt;h3 id="wikidata-items"&gt;Wikidata Items&lt;/h3&gt;
+&lt;p&gt;For instance, below is an image of the item Philadelphia Musuem of Art. As the image shows, the museum is classified as an instance of another item, the &lt;em&gt;art museum&lt;/em&gt;.&lt;/p&gt;</description></item><item><title>Resources</title><link>https://artvizphilly.github.io/resources/</link><pubDate>Tue, 26 Jul 2022 14:30:34 -0400</pubDate><guid>https://artvizphilly.github.io/resources/</guid><description>&lt;h2 id="code-repositories"&gt;Code Repositories&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/artvizphilly/wikidata"&gt;Wikidata notebooks and scripts&lt;/a&gt; &amp;ndash; SPARQL queries and Python visualizations for Black artists in Philadelphia&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/artvizphilly/artvizphilly.github.io"&gt;Project website source&lt;/a&gt; &amp;ndash; This Hugo site&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="leading-fellows-research-2022"&gt;LEADING Fellows Research (2022)&lt;/h2&gt;
+&lt;p&gt;This project included work by &lt;a href="https://mrc.cci.drexel.edu/leading/"&gt;LEADING Fellows&lt;/a&gt; Pelle Tracey and Eiman Ahmed, through the data science fellowship program run by the &lt;a href="https://mrc.cci.drexel.edu/"&gt;Metadata Research Center&lt;/a&gt; at Drexel University.&lt;/p&gt;
+&lt;p&gt;Fellows contributed to two areas:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Wikidata editing&lt;/strong&gt; &amp;ndash; Batch-adding PMA entity IDs to Wikidata records for Black artists using OpenRefine&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Murals and housing values&lt;/strong&gt; &amp;ndash; An R Shiny app mapping the relationship between mural density and housing values by zip code in Philadelphia&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All code, data, and research notes from the fellowship are available for download:&lt;/p&gt;</description></item><item><title>Syllabus</title><link>https://artvizphilly.github.io/syllabus/</link><pubDate>Tue, 26 Jul 2022 14:30:34 -0400</pubDate><guid>https://artvizphilly.github.io/syllabus/</guid><description>&lt;h2 id="week-1"&gt;Week 1&lt;/h2&gt;
+&lt;h3 id="project-overview-and-intro-to-wikidata"&gt;Project Overview and Intro to Wikidata&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Overview of Editing Github&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Permissions&lt;/li&gt;
+&lt;li&gt;Documentation&lt;/li&gt;
+&lt;li&gt;Tutorials&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Introduction to Tracks&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Photogrammetry with Polycam and Blender&lt;/li&gt;
+&lt;li&gt;Story Mapping with ArcGIS StoryMaps&lt;/li&gt;
+&lt;li&gt;Unity for Android&lt;/li&gt;
+&lt;li&gt;Wikidata and SPARQL/Python data viz&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Overview of Editing Wikidata&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="week-2"&gt;Week 2&lt;/h2&gt;
+&lt;h3 id="querying-wikidata-with-sparql-and-python"&gt;Querying Wikidata with SPARQL and Python&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Intro to Sparql&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Intro to Python with Google Colab Notebooks&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="week-3"&gt;Week 3&lt;/h2&gt;
+&lt;h3 id="working-with-github-and-github-pages"&gt;Working with Github and Github Pages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Basics of Git&lt;/li&gt;
+&lt;li&gt;Github Pages&lt;/li&gt;
+&lt;li&gt;Web frameworks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="week-4"&gt;Week 4&lt;/h2&gt;
+&lt;h3 id="developing-a-website-with-github"&gt;Developing a Website with Github&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Deciding on a Web Framework&lt;/li&gt;
+&lt;li&gt;Building the Skeleton&lt;/li&gt;
+&lt;li&gt;Web design principles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="week-5"&gt;Week 5&lt;/h2&gt;
+&lt;h3 id="website-design"&gt;Website Design&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Documenting wikidata or 3d modeling work&lt;/li&gt;
+&lt;li&gt;Generating content for the website&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>About</title><link>https://artvizphilly.github.io/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://artvizphilly.github.io/about/</guid><description>&lt;p&gt;Mapping Black Philly Art is a digital humanities project that uses Wikidata, SPARQL, and Python to document and visualize information about Black artists in Philadelphia. The project is a collaboration between the Philadelphia Museum of Art and the Loretta C. Duckworth Scholars Studio at Temple University Libraries.&lt;/p&gt;
+&lt;h2 id="team"&gt;Team&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Synatra Smith, Philadelphia Museum of Art&lt;/li&gt;
+&lt;li&gt;Alex Wermer-Colan, Temple University&lt;/li&gt;
+&lt;li&gt;Holly Tomren, Temple University&lt;/li&gt;
+&lt;li&gt;Eiman Ahmed, Rutgers University&lt;/li&gt;
+&lt;li&gt;Pelle Tracey, University of Michigan&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Contact</title><link>https://artvizphilly.github.io/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://artvizphilly.github.io/contact/</guid><description>&lt;p&gt;For questions about the Mapping Black Philly Art project, contact:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Alex Wermer-Colan&lt;/strong&gt; &amp;ndash; &lt;a href="https://sites.temple.edu/tudsc/"&gt;Scholars Studio, Temple University Libraries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Synatra Smith&lt;/strong&gt; &amp;ndash; &lt;a href="https://philamuseum.org/"&gt;Philadelphia Museum of Art&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
