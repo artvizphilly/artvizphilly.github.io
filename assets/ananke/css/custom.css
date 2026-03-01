@@ -57,6 +57,16 @@ a.ba.b--moon-gray.bg-light-gray {
   transition: background-color 0.15s ease;
 }
 
+/* Widen homepage content area (Tachyons measure-wide = 34em is too narrow) */
+article.measure-wide {
+  max-width: 56rem;
+}
+
+/* Widen page content area (Resources, etc.) */
+article.mw7 {
+  max-width: 56rem;
+}
+
 /* Footer: breathing room */
 footer[role="contentinfo"] {
   margin-top: 3rem;
