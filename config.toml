@@ -32,4 +32,4 @@ enableRobotsTXT = true
     identifier = "resources"
     name       = "Resources"
     url        = "/resources/"
-    weight     = 3
+    weight     = 2
