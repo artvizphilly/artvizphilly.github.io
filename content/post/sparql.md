@@ -4,6 +4,7 @@ description: "Using SPARQL to query Wikidata for information about Black artists
 featured_image: "/sparql_logo.png"
 tags: [sparql]
 title: "Querying Wikidata with SPARQL"
+author: "Jay Winkler"
 ---
 
 SPARQL is a query language for retrieving data from knowledge graphs like Wikidata. If you've used SQL to query databases, SPARQL follows a similar logic -- but instead of rows and columns, you're working with linked triples: subject, predicate, object.

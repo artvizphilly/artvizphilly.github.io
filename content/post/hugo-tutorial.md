@@ -2,12 +2,9 @@
 title: "Building a Static Site with Hugo"
 date: 2022-08-23T10:19:26-04:00
 draft: false
-urlcolor: blue
 featured_image: "/parkbench.png"
+author: "Pelle Tracey"
 ---
-
-# Pelle's Notes:
-## Using Hugo to build a simple static site.
 
 Hugo is a useful tool for creating a website. In these notes, I will refer to using Hugo alongside Github. Github is used here both as a place to store the code for your site so that you can collaborate with others and access it from any computer, *and* as a way of hosting your site (putting it online so others can see it).
 

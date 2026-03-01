@@ -11,8 +11,8 @@ Mapping Black Philly Art is a digital humanities project that uses Wikidata, SPA
 
 ## Team
 
-- Synatra Smith, Philadelphia Museum of Art
-- Alex Wermer-Colan, Temple University
-- Holly Tomren, Temple University
-- Eiman Ahmed, Rutgers University
-- Pelle Tracey, University of Michigan
+- **Synatra Smith** (Project Director), Philadelphia Museum of Art
+- **Alex Wermer-Colan**, Loretta C. Duckworth Scholars Studio, Temple University Libraries
+- **Holly Tomren**, Temple University Libraries
+- **Eiman Ahmed**, LEADING Fellow, Rutgers University
+- **Pelle Tracey**, LEADING Fellow, University of Michigan

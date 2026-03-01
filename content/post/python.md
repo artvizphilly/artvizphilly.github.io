@@ -4,6 +4,7 @@ description: "Using Python to query and visualize Wikidata about Black artists i
 featured_image: "/python-programming-language.png"
 tags: [python]
 title: "Visualizing Wikidata with Python"
+author: "Jay Winkler and Rebecca Y. Bayeck"
 ---
 
 For this project, we used Python to run SPARQL queries against Wikidata and turn the results into interactive visualizations. The main tools are [SPARQLWrapper](https://sparqlwrapper.readthedocs.io/) for querying and [Plotly](https://plotly.com/python/) for visualization.

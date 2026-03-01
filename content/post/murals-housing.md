@@ -7,7 +7,7 @@ tags: ["murals", "housing", "R", "shiny"]
 author: "Pelle Tracey"
 ---
 
-Is there a relationship between the number of murals and home values in a neighborhood? This was the central question behind our 2022 LEADING Fellows research project, conducted in collaboration with Dr. Synatra Smith and Dr. Alex Wermer-Colan at the Temple University Scholars Studio.
+Is there a relationship between the number of murals and home values in a neighborhood? This was the central question behind our 2022 LEADING Fellows research project, directed by Dr. Synatra Smith (Philadelphia Museum of Art) in collaboration with Dr. Alex Wermer-Colan at the Temple University Scholars Studio.
 
 At first, it seemed straightforward: wealthier neighborhoods have more murals because residents can better advocate for beautification projects. But the relationship might work the other way -- murals could contribute to rising home values, either directly through curb appeal or indirectly through gentrification. We set out to examine this in two ways: statistical analysis and interactive mapping.
 
