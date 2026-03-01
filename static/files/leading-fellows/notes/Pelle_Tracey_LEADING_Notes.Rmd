@@ -1,0 +1,725 @@
+---
+title: "LEADING Notes"
+author: "Pelle Tracey"
+date: "2022-12-01"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Introduction
+
+Welcome!
+My name is Pelle.
+I was a LEADING fellow in 2022 working with Dr. Synatra Smith and Dr. Alex Cohen at the Temple University Scholar's Studio.
+I worked alongside another fellow, Eiman Ahmed.
+We worked on two main projects with Synatra and Alex:  
+
+1. Edited Wikidata entries for Black Philadelphian artists in the Philadelphia Museum of Art's collection to include an entity ID tag, associating them with the museum.  
+2. Started a research and visualization project examining the relationship between housing values and the location of public art, specifically murals, in Philadelphia.  
+
+We spent a little bit of time on the first project, and a substantial amount of time on the second I have a few notes for the first project and then more detailed notes for the mural project.
+
+# Wikidata Editing
+
+Eiman and I's overall task was to add entity IDs for several hundred Wikidata pages.
+These pages represent artists who have work in the PMA's collection or are otherwise associated with the museum.
+To do this, we followed an [excellent tutorial](https://sites.temple.edu/tudsc/2021/12/15/editing-wikidata/) written by prior LEADING fellow Rebecca Y. Bayeck.
+Additional resources are linked in this helpful [Google Doc](https://docs.google.com/document/d/119CSPG0UCICQRuA4xd-7Q815LnGM2ksscoGTLrBZQfk/edit) that Synatra assembled.
+
+Adding the entity IDs was fairly straightforward.
+The process I followed was as follows:
+
+* Download Openrefine, log in, and grant permissions for Openrefine to access Google Sheet with constituent IDs (unique identifiers for each artist we need to add)   
+* Import data to Openrefine follow Rebecca's instructions. Make sure to reconcile on "Display Name."   
+* Sort data by whether reconciling produced a match for each name.  
+* Go through unmatched results and verify whether wikidata entries exist. Some unmatched have multiple possible matches---clarify with birth/death dates or other bio information.  
+* Some unmatched results are institutions/companies where display name is formatted like "NAME, PLACE". For these, try searching only the company name in wikidata.  
+* Flag all display names without wikidata entries by highlighting red in google sheet. Continue until all rows are either matched or highlighted red in the google sheet.  
+
+Next we need to create a schema to batch-add the PMA entity ID's to the matched records.
+
+* Continue following wikidata tutorial Sort display name by "matched", then create a schema to batch-add PMA entity ID's.  
+* To do this, drag and drop "display name" to text box in OpenRefine.  
+* Then add P8317 (the PMA entity ID) to the "Statements" field, then drag and drop the "constituents ID" column into the statement (see screenshots for details)  
+
+![before](/users/pelletracey/Pelle_Tracey_LEADING_Notes/Assets/image6.png) and ![after](/Users/pelletracey/Pelle_Tracey_LEADING_Notes/Assets/image7.png)
+
+Finally, check for any problems and then push changes to Wikidata. 
+
+* Open the "issues" tab at top-center and address issues if needed.  
+* Then push to Wikidata by clicking the Wikidata drop-down in top right "Upload changes to Wikibase", entering log-in credentials, and submitting.  
+* Check your work by visiting respective wikidata pages.  
+
+# Murals and Housing Values
+
+## Intro
+
+This project came from an idea Synatra had. It started from a basic question: **is there a relationship between the number of murals and home values in a neighborhood?**
+
+At first, it seemed like a straightforward question. Yes—there were more murals in wealthier neighborhoods, because wealthy residents could better advocate for neighborhood beautification projects. But it was more complex than it appeared on the surface. The relationship might work the other way: murals might contribute to home values rising—either directly through increasing curb appeal or indirectly through playing some role in gentrification. We decided to try to examine this relationship in two ways: through statistical analysis and through mapping. 
+
+Our research questions were: (RQ1) *What is the relationship between the presence of murals and property values in Philadelphia*, and (RQ2) *how has that relationship changed from 2000 to the present?*
+
+- Visualization component (interactive map or storytelling)
+- Statistical analysis (cross-lagged panel analysis)
+
+This project had three phases.
+
+1. **Identifying Data Sources** Exploring potential data sources for housing values and getting familiar with mural dataset.
+2. **Data Wrangling** Cleaning and preparing chosen datasets.
+3. **Statistical and Spatial Analysis**
+
+## Identifying Data Sources
+
+To analyze the relationship we needed two datasets: information about murals (number, location, date of creation, date of removal if applicable), and information about housing prices or values. Synatra helped us source the mural data from an administrator at the Mural Arts Program—Philadelphia's largest steward of murals. While there are murals in the city not included in this dataset, we decided that for the amount of time we had for this project, the Mural Arts dataset was as good as we could get.
+
+That left Eiman and I to find a dataset for housing values/prices. Our first attempts used data from the Philadelphia city government's [open data portal](https://www.opendataphilly.org/dataset/opa-property-assessments).  We began by looking at the available [property assessment history](https://www.opendataphilly.org/dataset/opa-property-assessments/resource/8b7d5e01-1ad2-45d4-838d-2836cde0c39c) which contained parcels and assessed values from 2015-2023. 
+
+I began by trying some preliminary analysis on the property data. I used `full_join` to merge the property assessment history dataframe with a property location dataframe to create a single dataframe with property history and specific location information.
+
+I then used `melt` to transform the data to a long dataframe from the existing “wide” dataframe, and then tried some basic line plots using ggplot. This revealed two immediate problems with the property assessment history data.
+
+1. The biggest problem is that the timeframe is too short (2015-2023). Less than ten years of data is not super meaningful in terms of house prices. 
+2. Another problem is that the geographic breakdown is too granular (for example, fig.1 is a plot I made by geographic ward—there are too many wards for the plot to be super helpful.) 
+
+![Plot of average housing assessment by geographic ward](/Users/pelletracey/Pelle_Tracey_LEADING_Notes/Assets/image3.png)
+*Fig. 1: Average assessed property value by geographic ward from 2015-2023*
+
+After presenting this progress to the group, we decided "Ok, we need to find a better dataset for housing values."
+
+I also tried some preliminary analysis of the mural data. This was more successful. I have never done spatial plotting with R before so I used this as an opportunity to try to learn. These [tutorials](https://r-graph-gallery.com/331-basic-cartogram.html) are very helpful.
+
+- To do this I needed to convert the postal codes from the mural arts data from “chr” to “dbl” (numeric) in R which I did with `as.numeric`
+- I then needed to find zip code geojson data for Philly with the zip code boundaries which is available from the city [here](https://www.opendataphilly.org/dataset/zip-codes/resource/825cc9f5-92c2-4b7c-8b4e-6affa41396ee). I joined this data with the mural arts data frame.
+- Then I plotted a basic map with the quantity of murals for each zip code by following the tutorial instructions. This can help us visualize where the most murals are.  Fig. 2 and Fig. 3 below are my two best plots.
+- Also for us art-inclined people, [here's](https://github.com/BlakeRMills/MetBrewer#functions) a cool R package of palettes drawn from artwork at the Met. I used it for the mural plots.
+
+![Philadelphia murals](/Users/pelletracey/Pelle_Tracey_LEADING_Notes/Assets/image2.png)
+![Philadelphia murals with a different legend](/Users/pelletracey/Pelle_Tracey_LEADING_Notes/Assets/image4.png)
+*Two maps of murals showing the density of different murals for each Philadelphia zip-code.*
+
+For a new housing value/price dataset, we evaluated several options. Many thanks to Felipe Valdez, Temple Libraries GIS specialist, who was instrumental in guiding our search. We considered:
+
+- Philly Opendata dataset of real estate transfers
+  - We decided this is too complex for what we want to do
+- Federal Housing Finance Agency
+- [Zillow Housing Value Index (ZHVI)](https://www.zillow.com/research/data/)
+
+We decided to move forward with the ZHVI which is “A smoothed, seasonally adjusted measure of the typical home value and market changes across a given region and housing type. It reflects the typical value for homes in the 35th to 65th percentile range.”  
+We liked the ZHVI data because it stretched back to 2000, providing a longer time-scale than the city's assessment data. It also did not rely on property assessments or sales which we liked. Our decision was also based on availability of data at zipcode level and the relative simplicity of the data.
+
+Once we had chosen a data source, my next big project was wrangling the zhvi dataset and the mural arts dataset, and then combining them into a single useable dataframe.
+
+## Data Wrangling
+
+### ZHVI
+Here are the steps I followed for initial wrangling of the ZHVI data. All data wrangling was done using the `Dplyr` package in R.
+
+Quick note: the ZHVI file needs to be downloaded and then imported into R. It is possible to import the data directly from Zillow's API, but this requires requesting researcher access and being granted an authentication token. If future fellows are interested in creating a functional data-pipeline, this might be worth pursuing, but otherwise it seemed like too much trouble for a single dataset.
+
+```{R}
+#load packages
+
+library(tidyverse)
+library(readxl)
+library(shiny)
+library(sf)
+library(leaflet)
+library(RColorBrewer)
+library(geojsonio)
+library(readr)
+library(lubridate)
+
+#read in downloaded ZHVI file
+housing = read_csv("/Users/pelletracey/Pelle_Tracey_LEADING_Notes/Data/Zip_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv")
+
+#filter by Philadelphia, PA, then remove unnecessary columns. Leave Zip Code as identifier.
+housing = filter(housing, City == 'Philadelphia', StateName == 'PA')
+housing = housing[ -c(1,2,4:9)]
+
+#Transform data into long format for graphing
+housing = housing %>%
+  pivot_longer(!RegionName, names_to = "Date", values_to = "ZHVI")
+
+# The next challenge was to compute yearly averages, because the corresponding murals arts data does not breakdown by month.
+# 
+# 5. To start, I need to break the “date” variable column from YYYY-MM-DD format into three separate columns for year, month, day.   
+# To do this, I used the `lubridate package` (part of tidyverse but does not automatically load when you install `dplyr` and `tidyr`)
+# 6. Then run 
+
+housing = housing %>%
+  dplyr::mutate(year = lubridate::year(Date),
+                month = lubridate::month(Date),
+                day = lubridate::day(Date))
+
+# 7. Then need to take average of each year for each zip code, using `group_by` and `summarise` from `dplyr`
+
+housing = housing %>%
+  group_by(RegionName, year) %>%
+  summarise(yearly_avg = mean(ZHVI))
+
+```
+The end result is a clean, usable (and graphable!) dataframe for housing values in Philadelphia, by zip code, by year, from 2000-2022.
+
+### Mural Arts
+
+For the murals dataset, need to download and save the original file that Synatra shared with us all. I need to get a mural count for each zip by year (a running tally).
+
+```{R}
+#then do the murals. Read the file in
+murals = read_excel('/Users/pelletracey/Pelle_Tracey_LEADING_Notes/Data/MAP 9012022 Mural Locations Report_ForSynatra.xlsx', sheet=1)
+
+#then cleanup
+murals = murals[ !(murals$'Creation Date' > 2999), ]
+murals = murals[ !is.na(murals$'Postal Code'), ]
+
+# Here we need to separate murals with NA values for "On View Dates". Murals with an NA value are assumed to be still on view. Murals that have a value here will need to be addressed separately.
+
+murals_OV = murals[!(is.na(murals$'On View Dates')), ]
+murals = murals[(is.na(murals$'On View Dates')), ]
+
+#Then drop all except two columns “Postal Code” and “creation date” (all with NA values for on_view)
+murals = subset(murals, select = -c(1:3, 6:16))
+
+#change column names for ease
+colnames(murals) <- c("creation_date", "ov_date", "zip")
+
+#To get count (i.e. number of murals per zip at year X)
+murals = murals %>%
+  group_by(zip) %>%
+  mutate(Count=row_number())
+```
+
+#### On-View Dates (or "Fun with Regex")
+
+A subset of the mural data referred to murals that no longer exist or are maintained (decommissioned?). I tried to wrangle this “on-view” data and combine it with the bigger mural arts dataframe. This would give us the ability to add some additional data points (n=230ish).
+
+The problem with this is that the “on-view-dates” column is super messy. Multiple formats (like YYYY-YYYY, YYYY, mm/dd/yyyy-mm/dd/yyyy, etc) which are character strings. 
+I first tried parsing with lubridate but this did not work. After lots of stackoverflow searching, it seems like the best option is to use the `stringr` package function `str::extract` with Regex to pull the dates out.
+
+**Pelle Regex process**
+
+```{R}
+# To separate murals_OV into two DFs based on format of dates
+#first, clean up murals_OV
+
+murals_OV = subset(murals_OV, select = -c(1:3, 6:16))
+colnames(murals_OV) = c("creation_date", "ov_date", "zip")
+
+#remove non-date values (in this case, all 5 digit zip codes)
+murals_OV = murals_OV %>%
+  filter(nchar(murals_OV$ov_date) != 5)
+
+#parse the dates into separate 'from' and 'to' columns
+# "From” column
+
+murals_OV = murals_OV %>%
+  mutate(on_view_from = stringr::str_extract(ov_date, "^.*?(?=\\-)"))
+# “To” column
+
+murals_OV = murals_OV %>%
+  mutate(on_view_to = stringr::str_extract(ov_date, "(?<=\\-).*?$"))
+
+#then split into two DFs, one with just years, other with day/month/year
+murals_OV_year = murals_OV %>%
+  filter(nchar(murals_OV$on_view_from) == 4)
+
+murals_OV_full = murals_OV %>%
+  filter(nchar(murals_OV$on_view_from) > 4)
+
+#change dates from strings to date format
+murals_OV_full$on_view_from = as.Date(murals_OV_full$on_view_from, format = "%m/%d/%Y")
+murals_OV_full$on_view_to = as.Date(murals_OV_full$on_view_to, format = "%m/%d/%Y")
+
+murals_OV_year$on_view_from = as.Date(murals_OV_year$on_view_from, format="%Y")
+murals_OV_year$on_view_to = as.Date(murals_OV_year$on_view_to, format = "%Y")
+
+#split days/months/years into columns and drop days and months
+murals_OV_full = murals_OV_full %>%
+  dplyr::mutate(from_year = lubridate::year(on_view_from))
+
+murals_OV_full = murals_OV_full %>%
+  dplyr::mutate(to_year = lubridate::year(on_view_to))
+
+murals_OV_year = murals_OV_year %>%
+  dplyr::mutate(from_year = lubridate::year(on_view_from))
+
+murals_OV_year = murals_OV_year %>%
+  dplyr::mutate(to_year = lubridate::year(on_view_to))
+
+#drop columns we don't need (day, month, ov-date, creation_date)
+murals_OV_full = murals_OV_full[ -c(1,2,4,5)]
+murals_OV_year = murals_OV_year[ -c(1,2,4,5)]
+
+#rename columns
+colnames(murals_OV_full) = c("zip", "on_view_from", "on_view_to")
+colnames(murals_OV_year) = c("zip", "on_view_from", "on_view_to")
+
+#Recombine murals_OV_full and Murals_OV_year
+murals_OV = bind_rows(murals_OV_full, murals_OV_year)
+
+```
+The Regex was the hardest part of this. I installed the [Regexplain addin utility](https://www.garrickadenbuie.com/project/regexplain/) to RStudio which was very helpful.
+
+Now we have two mural dataframes - `murals_OV` for murals that have end dates and `murals` for murals that are ongoing. Next, we need to joing them and create a count.
+
+#### Next step was to get a running count of murals for each zip code
+This took a lot of puzzling through but ended up being a fairly simple solution.
+First, I needed to make a single df of all murals.
+
+```{R}
+#join murals_OV and murals - output should have three columns (zip, creation_date, on_view_to)
+#For the on_view_to variable, only rows from murals_on_view_join have values, all others have NA
+murals = murals[, c(3,1,2,4)]
+colnames(murals) = c("zip", "creation_date", "on_view_to", "count")
+colnames(murals_OV) = c("zip", "creation_date", "on_view_to")
+
+murals$on_view_to = as.numeric(murals$on_view_to)
+murals = full_join(murals, murals_OV)
+murals = murals[ -c(4)]
+
+#then pivot longer
+murals = murals %>%
+  pivot_longer(!zip, names_to = "type", values_to = "year")
+
+#remove NAs
+murals = murals[complete.cases(murals), ]
+
+#change "type" column into numeric 1 or -1 for creating a count
+murals$type[murals$type == 'creation_date'] <- 1
+murals$type[murals$type == 'on_view_to'] <- -1
+
+#create count: shoutout to Eiman for the solution to removing duplicates here.
+murals = murals %>% group_by(zip) %>% arrange(zip, year) %>% mutate(count = cumsum(type))
+
+murals <- murals %>% group_by(zip, year)  %>%  slice(n())
+
+```
+Now we have a unified `murals` dataframe that we can use for analysis.
+
+
+## Visualization and Shiny App Development
+
+```{R}
+#visualization time
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(geojsonio)
+library(broom)
+
+#read in Philadelphia zip code boundaries from Philly Open Data
+philly_json = geojson_read("https://opendata.arcgis.com/datasets/b54ec5210cee41c3a884c9086f7af1be_0.geojson", what = "sp")
+```
+
+Below is the code that works.
+
+```{R}
+m = leaflet(philly_json) %>%
+  addTiles %>%
+  addPolygons(stroke = FALSE, smoothFactor = 0.3, fillOpacity = 1,
+  label = ~paste0(CODE, ": "))
+
+```
+
+Then join directly to the SPDF object (philly_json). I commented out the code below because it would not knit, but it does run.
+
+ ```{R}
+# 
+# j = merge(philly_json, housing %>% filter(year=="2010"), by.x = "CODE", by.y = "RegionName", duplicateGeoms = TRUE)
+# 
+ ```
+
+ This seems to work. It outputs a SPDF that leaflet should accept and filters at the same time.
+ 
+ ```{R}
+# 
+# #define color palette function
+# pal <- colorNumeric(
+#   palette = "Reds",
+#   domain = j$yearly_avg)
+# 
+# #map test - below code works but not with the new color palette.
+#
+# leaflet(j) %>%
+#     addTiles() %>%
+#     addPolygons(stroke = FALSE, smoothFactor = 0.3, fillOpacity = 0.75,
+#                 fillColor = ~pal(log10(yearly_avg)),
+#                 label = ~paste0(CODE, "", formatC(yearly_avg, big.mark = ","))) %>%
+#     addLegend(pal = pal, values = ~log10(yearly_avg), opacity = 1.0,
+#               labFormat = labelFormat(transform = function(x) round(10^x)))
+# 
+# #this works!
+# leaflet(j) %>%
+#   addTiles() %>%
+#   addPolygons(stroke = FALSE, smoothFactor = 0.2,weight = 2, fillOpacity = .85,
+#               color = ~pal(yearly_avg),
+#               highlightOptions = highlightOptions(
+#                 weight = 5,
+#                 color = "#666",
+#                 dashArray = "",
+#                 fillOpacity = 0.7,
+#                 bringToFront = TRUE)) %>%
+#   addLegend("bottomright", pal = pal, values = ~yearly_avg,
+#     title = "Average Housing Value by Zip",
+#     labFormat = labelFormat(prefix = "$"),
+#     opacity = 1)
+# 
+ ```
+
+Next step is to integrate this into Shiny. I do this by adapting two tutorials: Yann Ryan & Alex Wermer-Colan's "Making an Interactive Web Application with R and Shiny", and the leaftlet for R documentation.
+
+Here is the current, complete functioning code:
+
+```{R}
+
+#load packages
+
+library(tidyverse)
+library(shiny)
+library(sf)
+library(leaflet)
+library(RColorBrewer)
+library(geojsonio)
+
+# import mural, housing, and mapping data
+
+housing_value_list = read_csv('housing_values_yearly.csv')
+mural_list = read_csv('mural_count_yearly.csv')
+philly_zip_csv = read_csv('Zipcodes_Poly.csv')
+philly_zip_json = geojson_read('Zipcodes_Poly.geojson', what = "sp")
+
+#define colors
+pal <- colorNumeric(
+  palette = "Reds",
+  domain = housing_value_list$yearly_avg)
+
+#define UI
+
+ui = fluidPage(
+  
+  titlePanel("Philadelphia Average Housing Values by Zip Code"),
+  sidebarLayout(
+    
+    sidebarPanel = sidebarPanel(
+      sliderInput('year', 'Year', min = 2000, max = 2022, value = 2010, sep = "")
+    ),
+    mainPanel = mainPanel(leafletOutput(outputId = 'map'))
+  )
+  
+)
+
+#build the server
+server = function(input, output){
+  
+  # map_df = reactive({
+  #   
+  #   housing_value_list %>%
+  #     filter(year == input$year) %>%
+  #     left_join(philly_zip_csv, by.x = 'zip_code', by.y = 'CODE')%>%
+  #     filter(!is.na(lng) & !is.na(lat)) %>%
+  #     st_as_sf(coords = c('lng', 'lat')) %>%
+  #     st_set_crs(4326)
+  
+    map_df2 = reactive({
+      
+      merge(philly_zip_json, housing_value_list %>% filter(year== input$year), by.x = "CODE", by.y = "zip_code", duplicateGeoms = TRUE) %>%
+        st_as_sf(coords = c('lng', 'lat')) %>%
+        st_set_crs(4326)
+    })
+  
+  output$map = renderLeaflet({
+    
+    leaflet(map_df2()) %>%
+      addTiles() %>%
+      addPolygons(stroke = FALSE, smoothFactor = 0.2,weight = 2, fillOpacity = .85,
+                  color = ~pal(yearly_avg)) %>%
+      addLegend("bottomright", pal = pal, values = ~yearly_avg,
+                title = "Average Housing Value by Zip",
+                labFormat = labelFormat(prefix = "$"),
+                opacity = 1) %>%
+      setView(lng = -75.16, lat = 39.95, zoom = 10)
+    })
+   
+}
+shinyApp(ui, server)
+```
+
+##I need to make the highlights work and do a few other things. Eventual goal is to add two check boxes in addition to the slider that toggle the maps on or off. Thus there would be three options:
+
+1.  Map of housing values
+
+2.  Map of mural counts
+
+3.  Map of both.
+
+##Highlighting is fixed
+
+```{R}
+
+#load packages
+
+library(tidyverse)
+library(shiny)
+library(sf)
+library(leaflet)
+library(RColorBrewer)
+library(geojsonio)
+
+# import mural, housing, and mapping data
+
+housing_value_list = read_csv('housing_values_yearly.csv')
+mural_list = read_csv('mural_count_yearly.csv')
+philly_zip_csv = read_csv('Zipcodes_Poly.csv')
+philly_zip_json = geojson_read('Zipcodes_Poly.geojson', what = "sp")
+
+#define colors
+pal <- colorNumeric(
+  palette = "Reds",
+  domain = housing_value_list$yearly_avg)
+
+
+
+#define UI
+
+ui = fluidPage(
+  
+  titlePanel("Philadelphia Average Housing Values by Zip Code"),
+  sidebarLayout(
+    
+    sidebarPanel = sidebarPanel(
+      sliderInput('year', 'Year', min = 2000, max = 2022, value = 2010, sep = "")
+    ),
+    mainPanel = mainPanel(leafletOutput(outputId = 'map'))
+  )
+  
+)
+
+#build the server
+server = function(input, output){
+  
+  # map_df = reactive({
+  #   
+  #   housing_value_list %>%
+  #     filter(year == input$year) %>%
+  #     left_join(philly_zip_csv, by.x = 'zip_code', by.y = 'CODE')%>%
+  #     filter(!is.na(lng) & !is.na(lat)) %>%
+  #     st_as_sf(coords = c('lng', 'lat')) %>%
+  #     st_set_crs(4326)
+  
+    map_df2 = reactive({
+      
+      merge(philly_zip_json, housing_value_list %>% filter(year== input$year), by.x = "CODE", by.y = "zip_code", duplicateGeoms = TRUE) %>%
+        st_as_sf(coords = c('lng', 'lat')) %>%
+        st_set_crs(4326)
+    })
+  
+  output$map = renderLeaflet({
+    
+    #define labels for hover
+    labels <- sprintf(
+      "<strong>%s</strong><br/>$%g</sup>",
+      map_df2()$CODE, map_df2()$yearly_avg
+    ) %>% lapply(htmltools::HTML)
+    
+    leaflet(map_df2()) %>%
+      addTiles() %>%
+      addPolygons(
+        fillColor = ~pal(yearly_avg),
+        weight = 2,
+        opacity = 1,
+        color = "white",
+        dashArray = "3",
+        stroke = FALSE, smoothFactor = 0.2, fillOpacity = .85,
+        highlightOptions = highlightOptions(
+          weight = 5,
+          color = "#666",
+          dashArray = "",
+          fillOpacity = 0.7,
+          bringToFront = TRUE),
+        label = labels,
+        labelOptions = labelOptions(
+          style = list("font-weight" = "normal", padding = "3px 8px"),
+          textsize = "15px",
+          direction = "auto")) %>%
+      addLegend("bottomright", pal = pal, values = ~yearly_avg,
+                title = "Average Housing Value by Zip",
+                labFormat = labelFormat(prefix = "$"),
+                opacity = 1) %>%
+      setView(lng = -75.16, lat = 39.95, zoom = 10)
+    })
+   
+}
+shinyApp(ui, server)
+```
+
+Taking a short break now. Next step - adding mural counts as a layer. Two options: adding mural counts into single reactive variable (Map_df2) or creating a second reactive variable (map_df3)
+
+Trying to merge all three dataframes is proving tricky. Going to try to merge housing values and mural counts into a single csv?
+
+Okay - so I was able to get a preliminary, working app by combining housing values and mural counts into a single CSV. The app ran and had clickable layers. However the large number of missing years and NAs in the mural data messed it up. So now, back to some data wrangling. I am going to try to: (1) ```expand()``` the murals DF to include years from 1983 to 2022 for all zip codes; (2) full join on zip_codes and years with full mural dataframe; (3) use ```fill()``` to replace NA mural count values with the value from previous non-NA year.
+
+To start, I am expanding the data.
+
+ ``` {R}
+# 
+# murals_expand_test = murals_long_testy %>%
+#      group_by(zip_code) %>%
+#      expand(year = 1983:2022)
+ ```
+
+Then, going to full_join
+
+ ``` {R}
+# murals_long_testy = full_join(murals_expand_test, murals_long_testy, by=c("zip_code", "year"))
+ ```
+
+Success! Now to use ```fill()```.
+
+ ```{R}
+# 
+# murals_long_testy2 = murals_long_testy %>%
+#   fill(mural_count)
+ ```
+
+Woo hoo! Now, need to replace remaining NA values for mural_count with 0s (remaining NAs are all for before any murals were recorded in a zip_code).
+
+ ```{R}
+# murals_long_testy = murals_long_testy2
+# #then drop type column
+# murals_long_testy$type = NULL
+# 
+# #then replace NAs in mural_count
+# murals_long_testy[is.na(murals_long_testy)] = 0
+ ```
+
+Then make big dataframe again
+ ```{R}
+# housing_and_murals = merge(tidy_yearly, murals_long_testy)
+ ```
+
+Okay so this works (I wrote housing and murals to a new csv file and moved it to the working directory for the app, then updated the app code to read in the new file.)
+##Current Working App version:
+```{R}
+#load packages
+
+library(tidyverse)
+library(shiny)
+library(sf)
+library(leaflet)
+library(RColorBrewer)
+library(geojsonio)
+
+# import mural, housing, and mapping data
+
+housing_and_murals_list = read_csv('Housing_and_Murals.csv')
+mural_list = read_csv('mural_count_yearly.csv')
+philly_zip_csv = read_csv('Zipcodes_Poly.csv')
+philly_zip_json = geojson_read('Zipcodes_Poly.geojson', what = "sp")
+
+#define colors
+pal <- colorNumeric(
+  palette = "Reds",
+  domain = housing_and_murals_list$yearly_avg)
+
+pal2 = colorNumeric(
+  palette = "Blues",
+  domain = housing_and_murals_list$mural_count)
+
+
+#define UI
+
+ui = fluidPage(
+  
+  titlePanel("Philadelphia Average Housing Values by Zip Code"),
+  sidebarLayout(
+    
+    sidebarPanel = sidebarPanel(
+      sliderInput('year', 'Year', min = 2000, max = 2022, value = 2010, sep = "")
+    ),
+    mainPanel = mainPanel(leafletOutput(outputId = 'map'))
+  )
+  
+)
+
+#build the server
+server = function(input, output){
+  
+    map_df2 = reactive({
+      
+      merge(philly_zip_json, housing_and_murals_list %>% filter(year== input$year), by.x = "CODE", by.y = "zip_code", duplicateGeoms = TRUE) %>%
+        st_as_sf(coords = c('lng', 'lat')) %>%
+        st_set_crs(4326)
+    })
+  
+  output$map = renderLeaflet({
+    
+    #define labels for hover
+    labels <- sprintf(
+      "<strong>%s</strong><br/>$%g</sup>",
+      map_df2()$CODE, map_df2()$yearly_avg
+    ) %>% lapply(htmltools::HTML)
+    
+    leaflet(map_df2()) %>%
+      addTiles() %>%
+      addPolygons(
+        fillColor = ~pal(yearly_avg),
+        weight = 2,
+        opacity = 1,
+        color = "white",
+        dashArray = "3",
+        stroke = FALSE, smoothFactor = 0.2, fillOpacity = .85,
+        highlightOptions = highlightOptions(
+          weight = 5,
+          color = "#666",
+          dashArray = "",
+          fillOpacity = 0.7,
+          bringToFront = TRUE),
+        label = labels,
+        labelOptions = labelOptions(
+          style = list("font-weight" = "normal", padding = "3px 8px"),
+          textsize = "15px",
+          direction = "auto"),
+        group = "Housing Values") %>%
+      addPolygons(
+        fillColor = ~pal2(mural_count),
+        weight = 2,
+        opacity = 1,
+        color = "white",
+        dashArray = "3",
+        stroke = FALSE, smoothFactor = 0.2, fillOpacity = .85,
+        highlightOptions = highlightOptions(
+          weight = 5,
+          color = "#666",
+          dashArray = "",
+          fillOpacity = 0.7,
+          bringToFront = TRUE),
+        label = labels,
+        labelOptions = labelOptions(
+          style = list("font-weight" = "normal", padding = "3px 8px"),
+          textsize = "15px",
+          direction = "auto"),
+        group = "Mural Counts") %>%
+      addLayersControl(
+        overlayGroups = c("Housing Values", "Mural Counts"),
+        options = layersControlOptions(collapsed = FALSE)
+      ) %>%
+      addLegend("bottomright", pal = pal, values = ~yearly_avg,
+                title = "Average Housing Value by Zip",
+                labFormat = labelFormat(prefix = "$"),
+                opacity = 1) %>%
+      setView(lng = -75.16, lat = 39.95, zoom = 10)
+    })
+   
+}
+shinyApp(ui, server)
+```
+
+This is all the progress we made during our fellowship. I spent another few weeks trying to change the map so that it will not reset the view every time the input is changed, but am finally admitting defeat.
+

@@ -9,6 +9,24 @@ featured_image: "/parkbench.png"
 - [Wikidata notebooks and scripts](https://github.com/artvizphilly/wikidata) -- SPARQL queries and Python visualizations for Black artists in Philadelphia
 - [Project website source](https://github.com/artvizphilly/artvizphilly.github.io) -- This Hugo site
 
+## LEADING Fellows Research (2022)
+
+This project included work by [LEADING Fellows](https://mrc.cci.drexel.edu/leading/) Pelle Tracey and Eiman Ahmed, through the data science fellowship program run by the [Metadata Research Center](https://mrc.cci.drexel.edu/) at Drexel University.
+
+Fellows contributed to two areas:
+
+1. **Wikidata editing** -- Batch-adding PMA entity IDs to Wikidata records for Black artists using OpenRefine
+2. **Murals and housing values** -- An R Shiny app mapping the relationship between mural density and housing values by zip code in Philadelphia
+
+All code, data, and research notes from the fellowship are available for download:
+
+- [Shiny app source code](/files/leading-fellows/app.R)
+- [Research notes](/files/leading-fellows/notes/Pelle_Tracey_LEADING_Notes.html) (HTML) | [RMarkdown source](/files/leading-fellows/notes/Pelle_Tracey_LEADING_Notes.Rmd)
+- [Datasets](/files/leading-fellows/data/) (CSV, GeoJSON, XLSX)
+- [Wikidata query exports](/files/leading-fellows/wikidata-queries/) (XLSX)
+
+See the [Murals and Housing Values](/post/murals-housing/) post for a full writeup.
+
 ## Scholars Studio Blog Posts
 
 {{< figure src="Wikidata.png" title="" >}}

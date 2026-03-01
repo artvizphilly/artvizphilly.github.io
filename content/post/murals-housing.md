@@ -35,9 +35,15 @@ We built an R Shiny app using Leaflet to visualize the data spatially. The app l
 - **Housing values** by zip code (Reds palette)
 - **Mural counts** by zip code (Blues palette)
 
-{{< figure src="/murals_map.png" title="Mural density by Philadelphia zip code" >}}
+{{< figure src="/murals_map.png" title="Mural density by Philadelphia zip code (Leaflet/Shiny)" >}}
 
-The mapping revealed that murals are concentrated in certain zip codes, with notable clusters in North and West Philadelphia. The source code for the Shiny app is available on the project's GitHub.
+{{< figure src="/mural_concentration.png" title="Mural concentration by zip code (static choropleth)" >}}
+
+The mapping revealed that murals are concentrated in certain zip codes, with notable clusters in North and West Philadelphia.
+
+{{< figure src="/mural_cumulative.png" title="Cumulative mural count over time by zip code" >}}
+
+{{< figure src="/housing_ward.png" title="Average assessed property value by geographic ward, 2015--2023" >}}
 
 ## What We Learned
 
@@ -45,4 +51,15 @@ The mapping revealed that murals are concentrated in certain zip codes, with not
 - Spatial data wrangling in R (using `sf`, `terra`, and `leaflet`) has a steep learning curve but produces compelling interactive visualizations.
 - Messy date fields are a recurring challenge in cultural datasets -- building regex parsing pipelines early saves time.
 
-This project was part of the 2022 LEADING Fellowship. Thanks to Felipe Valdez (Temple Libraries GIS) for guidance on spatial data sources, and to Eiman Ahmed for contributions to the data cleaning pipeline.
+## Source Code and Data
+
+All code and data from this project are available for download:
+
+- [Shiny app source code](/files/leading-fellows/app.R) (R)
+- [Combined housing and mural dataset](/files/leading-fellows/data/Housing_and_Murals.csv) (CSV)
+- [Pelle Tracey's full research notes](/files/leading-fellows/notes/Pelle_Tracey_LEADING_Notes.html) (HTML) | [RMarkdown source](/files/leading-fellows/notes/Pelle_Tracey_LEADING_Notes.Rmd)
+- [Shiny app development notes](/files/leading-fellows/notes/Mural%20Map%20Shiny%20App%20Notes.Rmd) (Rmd)
+
+Additional data files are in the [leading-fellows data directory](/files/leading-fellows/data/).
+
+This project was part of the 2022 [LEADING Fellowship](https://mrc.cci.drexel.edu/leading/), a data science program for LIS professionals run by the Metadata Research Center at Drexel University. Thanks to Felipe Valdez (Temple Libraries GIS) for guidance on spatial data sources, and to Eiman Ahmed for contributions to the data cleaning pipeline.

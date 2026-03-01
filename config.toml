@@ -1,27 +1,27 @@
 title = "Mapping Black Philly Art"
-baseURL = '//artvizphilly.github.io/'
+baseURL = 'https://artvizphilly.github.io/'
 languageCode = 'en-us'
 theme = "ananke"
 
 resourceDir = "../resources"
-canonifyURLs = true
 staticDir = "../static"
-
-SectionPagesMenu = "main"
-Paginate = 10
-googleAnalytics = ""
 enableRobotsTXT = true
 
-[params]
-  text_color = ""
-  author = "Alex Wermer-Colan"
-  favicon = ""
-  site_logo = ""
-  description = "Website for PMA/Temple project."
-  # choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
-  background_color_class = "bg-black"
-  recent_posts_number = 3
+SectionPagesMenu = "main"
 
+[pagination]
+  pagerSize = 10
+
+[params]
+  author = "Alex Wermer-Colan"
+  description = "Visualizing Wikidata on Black artists in Philadelphia. A collaboration between the Philadelphia Museum of Art and Temple University."
+  background_color_class = "bg-dark-blue"
+  body_classes = "avenir bg-near-white"
+  recent_posts_number = 5
+  show_reading_time = true
+
+[params.ananke]
+  show_recent_posts = true
 
 [menu]
     [[menu.main]]

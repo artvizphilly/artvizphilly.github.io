@@ -33,10 +33,16 @@ Next, they can search for a property to add. For instance, users can add informa
 
 Once a statement of information is added, users can publish this information immediately, for all other Wikidata users to query and retrieve.
 
-### And Voila!  ###
+### Batch Editing with OpenRefine
 
-That is all there is - well, to get started, of course. 
+For this project, we used [OpenRefine](https://openrefine.org/) to batch-add PMA entity IDs (P8317) to Wikidata records for Black artists in the museum's collection. The process involves reconciling artist names against Wikidata, creating a schema for the new statements, and pushing the changes in bulk.
 
-Wikidata is an amazing resource that can be used to query large amounts of information using tools such as SPARQL and Python. Information on Querying Wikidata can be found on our website in the Posts section!
+{{<figure src="/wikidata_edit_before.png" title="OpenRefine: creating a new Wikidata item">}}
 
+{{<figure src="/wikidata_edit_after.png" title="OpenRefine: item with PMA ConstituentID statement added">}}
 
+For a step-by-step guide to this process, see Rebecca Y. Bayeck's blog post [Editing in the World of Wikidata](https://sites.temple.edu/tudsc/2021/12/15/editing-wikidata/). Pelle Tracey's [detailed LEADING Fellowship notes](/files/leading-fellows/notes/Pelle_Tracey_LEADING_Notes.html) also walk through the full OpenRefine workflow.
+
+### Learn More
+
+Wikidata is a powerful resource for querying and visualizing structured data. See our other posts on [querying Wikidata with SPARQL](/post/sparql/) and [visualizing Wikidata with Python](/post/python/).

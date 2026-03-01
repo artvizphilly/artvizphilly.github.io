@@ -1,0 +1,111 @@
+---
+title: "Pelle Shiny App dev notes"
+author: "Pelle Tracey"
+date: "2022-12-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# Pelle Notes Start Here
+
+Current project status:
+
+-   Data frames
+
+    -   presentation_murals_2020 = murals with count, zip code, and geographic info for year 2020
+    -   presentation_zhvi_2020 = housing values with zip, geo, for 2020
+    -   **tidy_yearly = yearly averages by zip**
+    -   **murals_long_test = yearly mural counts by zip**
+
+-   Visualizations
+
+    -   Plot 1 = 2020 housing value heatmap
+    -   plot 2 and plot 2.5 = 2020 mural count heatmap
+
+-   Goals:
+
+    -   diamond legend style like Felipe suggested does not seem possible. Instead, could do a gradient (graduted colors) for housing values and dots for mural locations. This would require some significant additional data wrangling though, so lets leave it as a "reach" goal.
+    -   make shiny maps (2) for each existing visualization
+
+
+
+
+> plot1 = ggplot() +
++     geom_polygon(data = presentation_zhvi_2020, aes(fill = yearly_avg, x = long, y = lat, group = id) , size=0, alpha=0.9) +
++         theme_void() +
++         scale_fill_viridis(trans = 'log10', option = "magma", labels=scales::dollar_format()) +
++         labs(title = "Philly Average Housing Value") +
++         coord_map()
+> plot1
+> plot1 = ggplot() +
++     geom_polygon(data = presentation_zhvi_2020, aes(fill = yearly_avg, x = long, y = lat, group = id) , size=0, alpha=0.9) +
++         theme_void() +
++         scale_fill_viridis(trans = 'log10', option = "magma", labels=scales::dollar_format()) +
++         labs(title = "Philly Average Housing Value 2020") +
++         coord_map()
+> plot1
+> plot2 = ggplot() +
++     geom_polygon(data = presentation_murals_2020, aes(fill = mural_count, x = long, y = lat, group = id) , size=0, alpha=0.9) +
++     theme_void() +
++     scale_fill_viridis(trans = 'log10', labels=scales::label_number()) +
++     labs(title = "Philly Mural Concentration 2020") +
++     coord_map()
+> plot2
+> View(murals_not_on_view)
+> View(mural_arts)
+> View(murals_long_test)
+> View(murals_zip)
+> View(tidy_yearly)
+> presentation_murals_2020$mural_count[ is.na(presentation_murals_2020$mural_count)] = 0.001
+> plot2.5 = ggplot() +
++     geom_polygon(data = presentation_murals_2020, aes(fill = mural_count, x = long, y = lat, group = id) , size=0, alpha=0.9) +
++     theme_void() +
++     scale_fill_viridis(trans = 'log10', labels=scales::label_number()) +
++     labs(title = "Philly Mural Concentration 2020") +
++     coord_map()
+> View(plot2.5)
+> plot2.5
+> presentation_murals_2020$mural_count[presentation_murals_2020$mural_count == 0.001] = 0.1
+> plot2.5 = ggplot() +
++     geom_polygon(data = presentation_murals_2020, aes(fill = mural_count, x = long, y = lat, group = id) , size=0, alpha=0.9) +
++     theme_void() +
++     scale_fill_viridis(trans = 'log10', labels=scales::label_number()) +
++     labs(title = "Philly Mural Concentration 2020") +
++     coord_map()
+> plot2.5
+> plot2.6 = ggplot() +
++     geom_polygon(data = presentation_murals_2020, aes(fill = mural_count, x = long, y = lat, group = id) , size=0, alpha=0.9) +
++     theme_void() +
++     scale_fill_viridis(trans = 'log10', breaks=c(0,5,10,15,25,50) labels=scales::label_number()) +
+Error: unexpected symbol in:
+"    theme_void() +
+    scale_fill_viridis(trans = 'log10', breaks=c(0,5,10,15,25,50) labels"
+> plot2.6 = ggplot() +
++     geom_polygon(data = presentation_murals_2020, aes(fill = mural_count, x = long, y = lat, group = id) , size=0, alpha=0.9) +
++     theme_void() +
++     scale_fill_viridis(trans = 'log10', breaks=c(0,5,10,15,25,50), labels=scales::label_number()) +
++     labs(title = "Philly Mural Concentration 2020") +
++     coord_map()

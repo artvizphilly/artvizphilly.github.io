@@ -4,11 +4,7 @@ date: 2022-07-26T14:30:34-04:00
 featured_image: "/parkbench.png"
 ---
 
-# Curriculum
-
-{{< figure src="parkbench.png" title="Sample work of art" >}}
-
-## Week 1 
+## Week 1
 
 ### Project Overview and Intro to Wikidata
 

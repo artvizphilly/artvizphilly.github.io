@@ -7,7 +7,7 @@ type: page
 menu: main
 ---
 
+For questions about the Mapping Black Philly Art project, contact:
 
-Get in touch about the Mapping Black Philly Art project.
-
-{{< form-contact action="https://example.com"  >}}
+- **Alex Wermer-Colan** -- [Scholars Studio, Temple University Libraries](https://sites.temple.edu/tudsc/)
+- **Synatra Smith** -- [Philadelphia Museum of Art](https://philamuseum.org/)
