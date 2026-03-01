@@ -7,8 +7,6 @@ resourceDir = "../resources"
 staticDir = "../static"
 enableRobotsTXT = true
 
-SectionPagesMenu = "main"
-
 [pagination]
   pagerSize = 10
 
@@ -24,7 +22,13 @@ SectionPagesMenu = "main"
 
 [menu]
     [[menu.main]]
+    identifier = "home"
+    name       = "Home"
+    url        = "/"
+    weight     = 1
+
+    [[menu.main]]
     identifier = "resources"
     name       = "Resources"
     url        = "/resources/"
-    weight     = 1
+    weight     = 3
